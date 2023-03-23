@@ -1,0 +1,229 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  padding-block: 40px;
+  z-index: 4;
+  border-block-end: 1px solid transparent;
+  transition: var(--transition-1);
+
+  &.active {
+    padding-block: 20px;
+    background-color: var(--eerie-black-4);
+    border-color: var(--black-alpha-15);
+  }
+
+  &.hide {
+    transform: translateY(-100%);
+    transition-delay: 250ms;
+  }
+
+  .container {
+    padding-inline: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    .logo1 > img {
+      transform: scale(2) translate(15px, 0);
+    }
+
+    .navbar {
+      position: fixed;
+      background-color: var(--smoky-black-1);
+      top: 0;
+      left: -360px;
+      bottom: 0;
+      max-width: 360px;
+      width: 100%;
+      padding-inline: 30px;
+      padding-block-end: 50px;
+      overflow-y: auto;
+      visibility: hidden;
+      z-index: 2;
+      transition: var(--transition-2);
+      // display: flex;
+      // flex: 1;
+      // justify-content: flex-end;
+
+      // ul.navbar-list {
+      //   display: flex;
+      //   gap: 30px;
+
+      //   li {
+      //     text-transform: uppercase;
+      //     transition: var(--transition-2);
+      //     font-weight: var(--weight-bold);
+      //     letter-spacing: var(--letterSpacing-1);
+      //     font-size: var(--fontSize-label-2);
+
+      //     &:hover {
+      //       color: var(--gold-crayola);
+      //     }
+      //   }
+      // }
+      &.active {
+        visibility: visible;
+        transform: translateX(360px);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--white-alpha-10);
+      }
+
+      .close-btn {
+        color: var(--white);
+        padding: 4px;
+        border-radius: var(--radius-circle);
+        margin-inline-start: auto;
+        margin-block: 30px 20px;
+        font-size: var(--fontSize-title-1);
+      }
+
+      .close-btn:is(:hover, :focus-visible) {
+        color: var(--gold-crayola);
+      }
+
+      .logo2 {
+        margin-block-end: 40px;
+        transform: translateX(5.3rem) scale(1.4);
+      }
+
+      .navbar-list {
+        border-block-end: 1px solid var(--white-alpha-20);
+        margin-block-end: 100px;
+
+        .navbar-item {
+          border-block-start: 1px solid var(--white-alpha-20);
+
+          .navbar-link {
+            position: relative;
+            font-size: var(--fontSize-label-2);
+            text-transform: uppercase;
+            padding-block: 10px;
+            max-width: unset;
+
+            .span {
+              transition: var(--transition-1);
+            }
+
+            &::after {
+              display: none;
+            }
+
+            &:is(:hover, :focus-visible, .active) .span {
+              color: var(--gold-crayola);
+              transform: translateX(20px);
+            }
+
+            .separator {
+              position: absolute;
+              top: 50%;
+              left: 0%;
+              transform: translateY(-50%) rotate(45deg);
+              opacity: 0;
+              transition: var(--transition-1);
+            }
+
+            &:is(:hover, :focus-visible, .active) .separator {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .text-center {
+        .navbar-title {
+          margin-block-end: 15px;
+        }
+
+        .navbar-text {
+          margin-block: 10px;
+        }
+
+        .body-4 {
+          color: var(--quick-silver);
+        }
+
+        .sidebar-email {
+          transition: var(--transition-1);
+
+          &:is(:hover, :focus-visible) {
+            color: var(--gold-crayola);
+          }
+        }
+
+        .separator {
+          margin: 30px auto;
+        }
+
+        .contact-label {
+          margin-block-end: 10px;
+        }
+      }
+    }
+
+    a.btn {
+      padding: 12px 45px;
+      background-color: var(--gold-crayola);
+      color: var(--black);
+      font-size: var(--fontSize-label-2);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: var(--letterSpacing-5);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--black-alpha-80);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-2);
+      z-index: 1;
+
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+// SIDE NAVBAR TOGGLER
+.nav-open-btn {
+  padding: 12px;
+  padding-inline-end: 0;
+
+  .line {
+    width: 30px;
+    height: 2px;
+    background-color: var(--white);
+    margin-block: 4px;
+    transform-origin: left;
+    animation: menuBtn 400ms ease-in-out alternate infinite;
+
+    @keyframes menuBtn {
+      0% {
+        transform: scaleX(1);
+      }
+      100% {
+        transform: scaleX(0.5);
+      }
+    }
+  }
+
+  .line-2 {
+    animation-delay: 150ms;
+  }
+
+  .line-3 {
+    animation-delay: 300ms;
+  }
+}
