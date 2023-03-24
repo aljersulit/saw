@@ -1,19 +1,64 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./header.scss";
 import logo from "../../assets/SAWlogo.png";
 
 export default function Header() {
   const [isNavActive, setIsNavActive] = useState(false);
+  const [headerStatus, setHeaderStatus] = useState({
+    active: false,
+    hidden: false,
+  });
+
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   const toggleNavbar = () => {
     setIsNavActive((prev) => !prev);
   };
 
+  // HEADER STATUS
+  useEffect(() => {
+    const handleScroll = () => {
+      setHeaderStatus(() => {
+        const isScrollDownward = prevScrollPos < window.scrollY;
+        let newStatus;
+        if (window.scrollY >= 50) {
+          newStatus = {
+            active: true,
+            hidden: isScrollDownward,
+          };
+        } else {
+          newStatus = {
+            active: false,
+            hidden: false,
+          };
+        }
+        setPrevScrollPos(window.scrollY);
+        return newStatus;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
   return (
-    <header className="header">
+    <header
+      className={`header ${headerStatus.active ? "active" : ""} ${
+        headerStatus.hidden ? "hide" : ""
+      }`}
+    >
       <div className="container">
         <a href="#" className="logo1">
-          <img src={logo} alt="logo" width={50} height={50} />
+          <img
+            className={headerStatus.active ? "shrink" : ""}
+            src={logo}
+            alt="logo"
+            width={50}
+            height={50}
+          />
         </a>
 
         <nav className={`navbar ${isNavActive ? "active" : ""}`}>
