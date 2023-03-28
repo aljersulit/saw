@@ -108,7 +108,8 @@ span,
 input,
 button,
 select,
-textarea {
+textarea,
+.ion-icon {
   display: block;
 }
 
@@ -157,8 +158,17 @@ body {
   font-size: var(--fontSize-body-4);
   font-weight: var(--weight-regular);
   line-height: var(--lineHeight-5);
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+  // TEMP HEIGHT
+  height: 300vh;
+
+  &.loaded {
+    overflow: overlay;
+  }
+
+  &.nav-active {
+    overflow: hidden;
+  }
 }
 
 ::-webkit-scrollbar {

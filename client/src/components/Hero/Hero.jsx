@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import assets from "../../assets/";
 import "./hero.scss";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 
 function Hero() {
   const [activeSlider, setActiveSlider] = useState(0);
@@ -67,8 +68,8 @@ function Hero() {
   }, [sliderItems.length, isPaused]);
 
   return (
-    <section className="hero" id="home" aria-label="home">
-      <ul>
+    <section className="hero text-center" aria-label="home" id="home">
+      <ul className="hero-slider">
         {sliderItems.map((item, index) => (
           <li
             key={index}
@@ -118,7 +119,7 @@ function Hero() {
           setIsPaused(false);
         }}
       >
-        <i className="fa-solid fa-chevron-left"></i>
+        <IoChevronBack />
       </button>
       <button
         className="slider-btn next"
@@ -131,8 +132,14 @@ function Hero() {
           setIsPaused(false);
         }}
       >
-        <i className="fa-solid fa-chevron-right"></i>
+        <IoChevronForward />
       </button>
+
+      <a href="#" className="hero-btn has-after">
+        <img src={assets.heroIcon} width={48} height={48} alt="booking icon" />
+
+        <span className="label-2 text-center span">Book A Table</span>
+      </a>
     </section>
   );
 }

@@ -1,8 +1,13 @@
+// TEMPORARY STYLE
+.header .btn {
+  display: none;
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   background-color: transparent;
   padding-block: 40px;
   z-index: 4;
@@ -28,13 +33,13 @@
     gap: 8px;
 
     .logo1 > img {
-      transform: scale(2) translate(15px, 0);
-      transition: transform var(--transition-1);
+      transform: scale(1.5) translate(15px, 0);
+      // transition: transform var(--transition-1);
     }
 
-    .logo1 > .shrink {
-      transform: scale(1.5) translate(15px, 0);
-    }
+    // .logo1 > .shrink {
+    //   transform: scale(1.5) translate(15px, 0);
+    // }
 
     .navbar {
       position: fixed;
@@ -46,30 +51,12 @@
       width: 100%;
       padding-inline: 30px;
       padding-block-end: 50px;
+      overflow-x: hidden;
       overflow-y: auto;
       visibility: hidden;
       z-index: 2;
       transition: var(--transition-2);
-      // display: flex;
-      // flex: 1;
-      // justify-content: flex-end;
-
-      // ul.navbar-list {
-      //   display: flex;
-      //   gap: 30px;
-
-      //   li {
-      //     text-transform: uppercase;
-      //     transition: var(--transition-2);
-      //     font-weight: var(--weight-bold);
-      //     letter-spacing: var(--letterSpacing-1);
-      //     font-size: var(--fontSize-label-2);
-
-      //     &:hover {
-      //       color: var(--gold-crayola);
-      //     }
-      //   }
-      // }
+      
       &.active {
         visibility: visible;
         transform: translateX(360px);
@@ -79,21 +66,29 @@
         background-color: var(--white-alpha-10);
       }
 
+      @media screen and (max-width: 480px) {
+        max-width: 480px;
+      }
+
       .close-btn {
         color: var(--white);
+        border: 1px solid currentColor;
         padding: 4px;
         border-radius: var(--radius-circle);
         margin-inline-start: auto;
         margin-block: 30px 20px;
-        font-size: var(--fontSize-title-1);
-      }
 
-      .close-btn:is(:hover, :focus-visible) {
-        color: var(--gold-crayola);
+        &:is(:hover, :focus-visible) {
+          color: var(--gold-crayola);
+        }
+
+        .ion-icon {
+          --ionicon-stroke-width: 40px;
+        }
       }
 
       .logo2 {
-        margin-block-end: 40px;
+        margin-block-end: 60px;
         transform: translateX(5.3rem) scale(1.4);
       }
 

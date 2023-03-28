@@ -1,38 +1,47 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 import "./header.scss";
+import { IoCloseOutline } from "react-icons/io5";
 import logo from "../../assets/SAWlogo.png";
 
-export default function Header() {
-  const [isNavActive, setIsNavActive] = useState(false);
-  const [headerStatus, setHeaderStatus] = useState({
-    active: false,
-    hidden: false,
-  });
-
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+function Header(props) {
+  const { setAppState, isNavActive, headerStatus, prevScrollPos } = props;
 
   const toggleNavbar = () => {
-    setIsNavActive((prev) => !prev);
+    setAppState((prev) => {
+      return {
+        ...prev,
+        isNavActive: !prev.isNavActive,
+      };
+    });
   };
 
-  // HEADER STATUS
+  // HEADER STATUS SCROLL EVENT
   useEffect(() => {
     const handleScroll = () => {
-      setHeaderStatus(() => {
+      setAppState((prev) => {
         const isScrollDownward = prevScrollPos < window.scrollY;
         let newStatus;
         if (window.scrollY >= 50) {
           newStatus = {
-            active: true,
-            hidden: isScrollDownward,
+            ...prev,
+            headerStatus: {
+              active: true,
+              hidden: isScrollDownward,
+            },
           };
         } else {
           newStatus = {
-            active: false,
-            hidden: false,
+            ...prev,
+            headerStatus: {
+              active: false,
+              hidden: false,
+            },
           };
         }
-        setPrevScrollPos(window.scrollY);
+        setAppState((prev) => ({
+          ...prev,
+          prevScrollPos: window.scrollY,
+        }));
         return newStatus;
       });
     };
@@ -42,7 +51,7 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [prevScrollPos]);
+  }, [setAppState, prevScrollPos]);
 
   return (
     <header
@@ -67,7 +76,7 @@ export default function Header() {
             aria-label="close menu"
             onClick={toggleNavbar}
           >
-            <i className="fa-regular fa-circle-xmark"></i>
+            <IoCloseOutline className="ion-icon" />
           </button>
 
           <a href="#" className="logo2">
@@ -145,6 +154,7 @@ export default function Header() {
             <div className="separator"></div>
 
             <p className="contact-label">Booking Request</p>
+
             <a
               href="tel:+639560719222"
               className="body-1 contact-number hover-underline"
@@ -174,7 +184,6 @@ export default function Header() {
 
         <div
           className={`overlay ${isNavActive ? "active" : ""}`}
-          data-nav-toggler
           data-overlay
           onClick={toggleNavbar}
         ></div>
@@ -182,3 +191,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

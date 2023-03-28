@@ -1,14 +1,13 @@
-import { React, useState, useEffect } from "react";
+// import { React, useState, useEffect } from "react";
 import "./loader.scss";
 
-function Loader() {
-  const [isLoaded, setIsLoaded] = useState(false);
+function Loader({isLoaded}) {
+  // const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      setIsLoaded(true);
-    });
-  }, []);
+  // useEffect(() => {
+  //   setIsLoaded(true);
+  //   document.body.classList.add("loaded");
+  // }, []);
 
   return (
     <div className={`preload ${isLoaded && "loaded"}`}>
