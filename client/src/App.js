@@ -2,6 +2,9 @@ import { React, useState, useEffect } from "react";
 import Loader from "./components/Loader/Loader";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import Menu from "./components/Menu/Menu";
+import About from "./components/About/About";
+import Intro from "./components/Intro/Intro";
 // import Topbar from "./components/Topbar/Topbar";
 import "./App.scss";
 
@@ -24,7 +27,6 @@ function App() {
       document.body.classList.remove("nav-active");
     }
   }, [appState.isNavActive]);
-  
 
   // On Page Load
   useEffect(() => {
@@ -49,6 +51,9 @@ function App() {
       />
       <main>
         <Hero />
+        <About />
+        <Intro />
+        <Menu />
       </main>
     </div>
   );

@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: var(--gold-crayola);
+  background-color: var(--smoky-black-3);
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -29,8 +29,8 @@
     width: 112px;
     height: 112px;
     border-radius: var(--radius-circle);
-    border: 3px solid var(--white);
-    border-block-start-color: var(--smoky-black-3);
+    border: 3px solid var(--gold-crayola);
+    border-block-start-color: rgb(66, 64, 64);
     margin-block-end: 45px;
     animation: rotate360 1s linear infinite;
   }

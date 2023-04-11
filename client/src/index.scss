@@ -22,8 +22,8 @@
   --loading-text-gradient: linear-gradient(
     90deg,
     transparent 0% 16.66%,
-    var(--smoky-black-3) 33.33% 50%,
-    transparent 66.66% 75%
+    var(--gold-crayola) 33.33% 60%,
+    transparent 80% 95%
   );
   --gradient-1: linear-gradient(
     to top,
@@ -182,3 +182,5 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: var(--gold-crayola);
 }
+
+// MEDIA QUERIES

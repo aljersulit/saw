@@ -84,54 +84,26 @@ function Header(props) {
           </a>
 
           <ul className="navbar-list">
-            <li className="navbar-item">
-              <a href="#home" className="navbar-link hover-underline active">
-                <div className="separator"></div>
+            {["Home", "About Us", "Menu", "Reviews", "Location", "Contact"].map(
+              (section, index) => {
+                return (
+                  <li className="navbar-item" key={index}>
+                    <a
+                      href={
+                        section === "About Us"
+                          ? "#about"
+                          : `#${section.toLowerCase()}`
+                      }
+                      className="navbar-link hover-underline active"
+                    >
+                      <div className="separator"></div>
 
-                <span className="span">Home</span>
-              </a>
-            </li>
-
-            <li className="navbar-item">
-              <a href="#menu" className="navbar-link hover-underline active">
-                <div className="separator"></div>
-
-                <span className="span">Menu</span>
-              </a>
-            </li>
-
-            <li className="navbar-item">
-              <a href="#gallery" className="navbar-link hover-underline active">
-                <div className="separator"></div>
-
-                <span className="span">Gallery</span>
-              </a>
-            </li>
-
-            <li className="navbar-item">
-              <a href="#reviews" className="navbar-link hover-underline active">
-                <div className="separator"></div>
-
-                <span className="span">Reviews</span>
-              </a>
-            </li>
-
-            <li className="navbar-item">
-              <a
-                href="#location"
-                className="navbar-link hover-underline active"
-              >
-                <div className="separator"></div>
-                <span className="span">Location</span>
-              </a>
-            </li>
-
-            <li className="navbar-item">
-              <a href="#contact" className="navbar-link hover-underline active">
-                <div className="separator"></div>
-                <span className="span">Contact</span>
-              </a>
-            </li>
+                      <span className="span">{section}</span>
+                    </a>
+                  </li>
+                );
+              }
+            )}
           </ul>
 
           <div className="text-center">

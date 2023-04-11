@@ -1,7 +1,7 @@
 // import { React, useState, useEffect } from "react";
 import "./loader.scss";
 
-function Loader({isLoaded}) {
+function Loader({ isLoaded }) {
   // const [isLoaded, setIsLoaded] = useState(false);
 
   // useEffect(() => {
