@@ -95,6 +95,7 @@ function Header(props) {
                           : `#${section.toLowerCase()}`
                       }
                       className="navbar-link hover-underline active"
+                      onClick={toggleNavbar}
                     >
                       <div className="separator"></div>
 

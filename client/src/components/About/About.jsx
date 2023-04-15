@@ -5,7 +5,7 @@ import assets from "../../assets";
 function About() {
   return (
     <section
-      className="section about text-center"
+      className="section about bg-black-10 text-center"
       aria-labelledby="about-label"
       id="about"
     >

@@ -41,7 +41,7 @@ function Intro() {
   }, []);
 
   return (
-    <section className="section text-center" aria-label="Intro">
+    <section className="text-center" aria-label="Intro">
       <div className="app__video">
         <video
           src={assets.meal}

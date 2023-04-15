@@ -26,11 +26,7 @@ function Menu() {
     },
   ];
   return (
-    <section
-      className="section menu bg-black-10 text-center"
-      id="menu"
-      aria-label="menu"
-    >
+    <section className="section menu text-center" id="menu" aria-label="menu">
       <div className="container">
         <p className="section-subtitle label-2">Flavors For Royalty</p>
 

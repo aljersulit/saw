@@ -14,6 +14,11 @@ import aboutAbsImage from "./about-abs-image.jpg";
 import badge2 from "./badge-2.png";
 import shape3 from "./shape-3.png";
 import meal from "./meal.mp4";
+import spoon from "./spoon.png";
+import gallery01 from "./gallery01.png";
+import gallery02 from "./gallery02.png";
+import gallery03 from "./gallery03.png";
+import gallery04 from "./gallery04.png";
 
 const assets = {
   heroSlider1,
@@ -32,6 +37,11 @@ const assets = {
   badge2,
   shape3,
   meal,
+  spoon,
+  gallery01,
+  gallery02,
+  gallery03,
+  gallery04,
 };
 
 export default assets;

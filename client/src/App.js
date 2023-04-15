@@ -5,7 +5,7 @@ import Hero from "./components/Hero/Hero";
 import Menu from "./components/Menu/Menu";
 import About from "./components/About/About";
 import Intro from "./components/Intro/Intro";
-// import Topbar from "./components/Topbar/Topbar";
+import Gallery from "./components/Gallery/Gallery";
 import "./App.scss";
 
 function App() {
@@ -42,7 +42,6 @@ function App() {
   return (
     <div className="App">
       <Loader isLoaded={appState.isLoaded} />
-      {/* <Topbar /> */}
       <Header
         setAppState={setAppState}
         isNavActive={appState.isNavActive}
@@ -53,6 +52,7 @@ function App() {
         <Hero />
         <About />
         <Intro />
+        <Gallery />
         <Menu />
       </main>
     </div>

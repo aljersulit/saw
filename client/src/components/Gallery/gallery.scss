@@ -1,0 +1,128 @@
+.gallery .container {
+  display: flex;
+  flex-direction: column;
+
+  .gallery-content {
+    min-width: 100%;
+
+    .section-text {
+      margin-block: 15px 30px;
+    }
+
+    a.btn {
+      margin-inline: auto;
+      margin-block-start: 26px;
+    }
+
+    @media screen and (min-width: 651px) {
+      & {
+        min-width: 50%;
+        padding-inline: 3rem;
+      }
+    }
+  }
+
+  .gallery-slider {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    margin: 5rem 0;
+    position: relative;
+
+    .images-container {
+      display: flex;
+      flex-direction: row;
+      width: max-content;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .image-card {
+        position: relative;
+        min-width: 240px; //301
+        height: 320px; // 447
+        margin-right: 2rem;
+
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 1;
+          transition: var(--transition-2);
+        }
+
+        .img-icon {
+          position: absolute;
+          color: #fff;
+          font-size: 2rem;
+          opacity: 0.5;
+          transition: var(--transition-2);
+          cursor: pointer;
+        }
+
+        &:hover {
+          img {
+            opacity: 0.35;
+          }
+
+          .img-icon {
+            opacity: 1;
+          }
+        }
+
+        @media screen and (min-width: 651px) {
+          & {
+            min-width: 301px;
+            height: 447px;
+          }
+        }
+
+        @media screen and (min-width: 2000px) {
+          & {
+            min-width: 400px;
+            height: 550px;
+          }
+        }
+      }
+    }
+
+    .slider-control {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      position: absolute;
+      bottom: 5%;
+
+      .arrow-icon {
+        color: var(--gold-crayola);
+        font-size: 2rem;
+        cursor: pointer;
+        background-color: var(--eerie-black-1);
+        border-radius: 5px;
+
+        &:hover {
+          color: var(--white);
+        }
+      }
+    }
+
+    @media screen and (min-width: 1150px) {
+      & {
+        max-width: 50%;
+        margin: 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1150px) {
+    & {
+      flex-direction: row;
+    }
+  }
+}
