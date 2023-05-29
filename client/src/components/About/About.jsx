@@ -8,6 +8,7 @@ function About() {
       className="section about bg-black-10 text-center"
       aria-labelledby="about-label"
       id="about"
+      data-content
     >
       <div className="container">
         <div className="about-content">

@@ -101,9 +101,10 @@
 
       .arrow-icon {
         color: var(--gold-crayola);
-        font-size: 2rem;
+        font-size: 2.5rem;
         cursor: pointer;
         background-color: var(--eerie-black-1);
+        border: 1px solid var(--davys-grey);
         border-radius: 5px;
 
         &:hover {

@@ -31,7 +31,6 @@ function Intro() {
       }, 2000);
     };
     const vidBtn = document.querySelector("#video-control");
-    console.log(vidBtn);
     vidBtn.addEventListener("mouseout", hideOverlay);
 
     return () => {

@@ -6,6 +6,12 @@ import Menu from "./components/Menu/Menu";
 import About from "./components/About/About";
 import Intro from "./components/Intro/Intro";
 import Gallery from "./components/Gallery/Gallery";
+import Location from "./components/Location/Location";
+import Testimonials from "./components/Testimonials/Testimonials";
+import Features from "./components/Features/Features";
+import Upcoming from "./components/Upcoming/Upcoming";
+import Footer from "./components/Footer/Footer";
+import BackToTop from "./components/BackToTop/BackToTop";
 import "./App.scss";
 
 function App() {
@@ -17,16 +23,18 @@ function App() {
       hidden: false,
     },
     prevScrollPos: 0,
+    isMapActive: false,
+    activeSection: "",
   });
 
   // When the side Nav is Active, body overflow is hidden
   useEffect(() => {
-    if (appState.isNavActive) {
-      document.body.classList.add("nav-active");
+    if (appState.isNavActive || appState.isMapActive) {
+      document.body.classList.add("navOrMap-active");
     } else {
-      document.body.classList.remove("nav-active");
+      document.body.classList.remove("navOrMap-active");
     }
-  }, [appState.isNavActive]);
+  }, [appState.isNavActive, appState.isMapActive]);
 
   // On Page Load
   useEffect(() => {
@@ -47,6 +55,7 @@ function App() {
         isNavActive={appState.isNavActive}
         headerStatus={appState.headerStatus}
         prevScrollPos={appState.prevScrollPos}
+        activeSection={appState.activeSection}
       />
       <main>
         <Hero />
@@ -54,7 +63,16 @@ function App() {
         <Intro />
         <Gallery />
         <Menu />
+        <Testimonials />
+        <Location
+          setAppState={setAppState}
+          isMapActive={appState.isMapActive}
+        />
+        <Features />
+        <Upcoming />
       </main>
+      <Footer />
+      <BackToTop active={appState.headerStatus.active} />
     </div>
   );
 }

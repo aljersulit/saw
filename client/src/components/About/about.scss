@@ -63,3 +63,28 @@
     }
   }
 }
+
+@media (min-width: 575px) {
+  .about .container {
+    gap: 80px;
+
+    .about-banner > .w-100 {
+      padding-inline-start: 90px;
+
+      .abs-image-1 {
+        width: 285px;
+      }
+    }
+  }
+
+  .about .contact-number {
+    --fontSize-body-1: 2.4rem;
+  }
+}
+
+@media (min-width: 992px)  {
+  .about .container {
+    grid-template: 0.7fr 1fr;
+    gap: 30px;
+  }
+}

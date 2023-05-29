@@ -28,7 +28,12 @@ function Gallery() {
   };
 
   return (
-    <section className="section gallery text-center" aria-label="Gallery">
+    <section
+      className="section gallery text-center"
+      id="gallery"
+      aria-label="Gallery"
+      data-content
+    >
       <div className="container">
         <div className="gallery-content">
           <p className="section-subtitle label-2">Instagram</p>

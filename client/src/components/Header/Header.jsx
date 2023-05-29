@@ -4,13 +4,30 @@ import { IoCloseOutline } from "react-icons/io5";
 import logo from "../../assets/SAWlogo.png";
 
 function Header(props) {
-  const { setAppState, isNavActive, headerStatus, prevScrollPos } = props;
+  const {
+    setAppState,
+    isNavActive,
+    headerStatus,
+    prevScrollPos,
+    activeSection,
+  } = props;
 
-  const toggleNavbar = () => {
+  const openNavbar = () => {
+    console.log("open!!!!!");
     setAppState((prev) => {
       return {
         ...prev,
-        isNavActive: !prev.isNavActive,
+        isNavActive: true,
+      };
+    });
+  };
+
+  const closeNavbar = () => {
+    console.log("close!!!!!");
+    setAppState((prev) => {
+      return {
+        ...prev,
+        isNavActive: false,
       };
     });
   };
@@ -53,6 +70,60 @@ function Header(props) {
     };
   }, [setAppState, prevScrollPos]);
 
+  useEffect(() => {
+    // const options = {
+    //   rootMargin: `0px 0px 0px -100%`,
+    // };
+
+    // const handleIntersection = (entries, observer) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       setAppState((prev) => ({
+    //         ...prev,
+    //         activeSection: entry.target.id,
+    //       }));
+    //     }
+    //   });
+    // };
+
+    // const observer = new IntersectionObserver(handleIntersection, options);
+    // const sections = document.querySelectorAll("section[data-content]");
+
+    // sections.forEach((section) => {
+    //   observer.observe(section);
+    // });
+
+    // return () => {
+    //   sections.forEach((section) => {
+    //     observer.unobserve(section);
+    //   });
+    // };
+
+    const sections = document.querySelectorAll("section[data-content]");
+
+    const handleScroll = () => {
+      sections.forEach((section) => {
+        let top = window.scrollY;
+        let offset = section.offsetTop - 150;
+        let height = section.offsetHeight;
+        let id = section.getAttribute("id");
+
+        if (top >= offset && top < offset + height) {
+          setAppState((prev) => ({
+            ...prev,
+            activeSection: id,
+          }));
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [setAppState]);
+
   return (
     <header
       className={`header ${headerStatus.active ? "active" : ""} ${
@@ -74,7 +145,7 @@ function Header(props) {
           <button
             className="close-btn"
             aria-label="close menu"
-            onClick={toggleNavbar}
+            onClick={closeNavbar} // closeNavbar
           >
             <IoCloseOutline className="ion-icon" />
           </button>
@@ -84,22 +155,26 @@ function Header(props) {
           </a>
 
           <ul className="navbar-list">
-            {["Home", "About Us", "Menu", "Reviews", "Location", "Contact"].map(
+            {["home", "about", "gallery", "menu", "location", "contact"].map(
               (section, index) => {
                 return (
                   <li className="navbar-item" key={index}>
                     <a
-                      href={
-                        section === "About Us"
-                          ? "#about"
-                          : `#${section.toLowerCase()}`
-                      }
-                      className="navbar-link hover-underline active"
-                      onClick={toggleNavbar}
+                      href={`#${section}`}
+                      className={`navbar-link hover-underline ${
+                        activeSection === section ? "active" : ""
+                      }`}
+                      onClick={closeNavbar} // closeNavbar
                     >
                       <div className="separator"></div>
 
-                      <span className="span">{section}</span>
+                      <span className="span">
+                        {section === "about"
+                          ? "About Us"
+                          : section === "location"
+                          ? "Find Us"
+                          : section}
+                      </span>
                     </a>
                   </li>
                 );
@@ -148,7 +223,7 @@ function Header(props) {
         <button
           className="nav-open-btn"
           aria-label="open menu"
-          onClick={toggleNavbar}
+          onClick={openNavbar} // openNavbar
         >
           <span className="line line-1"></span>
           <span className="line line-2"></span>
@@ -158,7 +233,7 @@ function Header(props) {
         <div
           className={`overlay ${isNavActive ? "active" : ""}`}
           data-overlay
-          onClick={toggleNavbar}
+          onClick={closeNavbar} // closeNavbar
         ></div>
       </div>
     </header>

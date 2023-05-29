@@ -52,3 +52,29 @@
     }
   }
 }
+
+
+@media (min-width: 575px) {
+  .menu .container {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .menu .shape {
+    display: block;
+  }
+
+  .menu .shape-1 {
+    bottom: 0;
+    left: 0;
+  }
+
+  .menu .shape-2 {
+    top: 0;
+    right: 0;
+  }
+
+}

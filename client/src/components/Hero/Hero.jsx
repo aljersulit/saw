@@ -68,7 +68,12 @@ function Hero() {
   }, [sliderItems.length, isPaused]);
 
   return (
-    <section className="hero text-center" aria-label="home" id="home">
+    <section
+      className="hero text-center"
+      aria-label="home"
+      id="home"
+      data-content
+    >
       <ul className="hero-slider">
         {sliderItems.map((item, index) => (
           <li
@@ -119,7 +124,7 @@ function Hero() {
           setIsPaused(false);
         }}
       >
-        <IoChevronBack />
+        <IoChevronBack className="ion-icon" />
       </button>
       <button
         className="slider-btn next"
@@ -132,7 +137,7 @@ function Hero() {
           setIsPaused(false);
         }}
       >
-        <IoChevronForward />
+        <IoChevronForward className="ion-icon" />
       </button>
 
       <a href="#" className="hero-btn has-after">

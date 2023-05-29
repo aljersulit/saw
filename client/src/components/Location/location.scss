@@ -1,0 +1,94 @@
+.location {
+  .container {
+    .location-form {
+      margin-block-start: -270px;
+
+      .form-left {
+        padding: 40px 20px 30px;
+
+        .form-text {
+          margin-block-end: 40px;
+
+          .link {
+            display: inline;
+            color: var(--gold-crayola);
+          }
+        }
+
+        .btn {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+
+      .form-right {
+        background-image: url("../../assets/form-pattern.png");
+        padding: 40px 20px 30px;
+        background-repeat: repeat;
+        background-position: top left;
+
+        .headline-1 {
+          margin-block-end: 40px;
+        }
+
+        .contact-label {
+          margin-block-end: 5px;
+        }
+
+        .separator {
+          margin: 20px auto;
+        }
+
+        .body-4 {
+          color: var(--quick-silver);
+          line-height: var(--lineHeight-3);
+
+          &:not(:last-child) {
+            margin-block-end: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  .map-container {
+    position: fixed;
+    z-index: 5;
+    bottom: -100%;
+    height: 100%;
+    width: 100%;
+    background-color: var(--black-alpha-20);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: var(--transition-2);
+
+    &.active {
+      pointer-events: all;
+      opacity: 1;
+      transform: translateY(-100%);
+      visibility: visible;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 10px;
+
+      .ion-icon {
+        color: var(--davys-grey);
+        font-size: 3em;
+      }
+    }
+
+    iframe.map {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .location .location-form {
+    margin-inline: 25px;
+  }
+}

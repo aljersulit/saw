@@ -166,7 +166,7 @@ body {
     overflow: overlay;
   }
 
-  &.nav-active {
+  &.navOrMap-active {
     overflow: hidden;
   }
 }
@@ -184,3 +184,42 @@ body {
 }
 
 // MEDIA QUERIES
+
+  //** 
+  //*responsive larger than 575px screen
+  //
+
+@media (min-width: 575px) {
+
+  :root {
+
+    // typography 
+
+    --fontSize-body-2: 2rem;
+
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  :root {
+    //*
+    // spacing
+    //
+
+    --section-space: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  :root {
+
+    //*
+    // typography
+    //
+
+    --fontSize-title-2: 2.5rem;
+  }
+}
